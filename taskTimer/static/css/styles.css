@@ -1,0 +1,52 @@
+ body {
+	/* background: rgba(44, 62, 80, .8); */
+	font-family: 'Oswald', 'Futura', sans-serif;
+	/* font: 'Times New Roman'; */
+	/* color: white */
+ }
+#wrapper {
+	margin-top: 10% !important;
+}
+#content {
+	background: #1d5dec;
+	padding: 25px;
+}
+#content > h2 {
+	font-size: 18px;
+	text-align: center;
+	padding-top: 0;
+}
+.t10 {
+	margin-top: 10px;
+}
+.t20 {
+	margin-top: 20px;
+}
+.todo-completed {
+	text-decoration: line-through;
+	background: rgba(149, 165, 166, .3);
+}
+footer {
+	margin-top: 20px;
+	color: white;
+}
+.list-group-item {
+	color: black;
+}
+
+.card .custom-card-header
+{
+	background: #1d5dec;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+}
+
+.col-form-label{
+	color: #9c27b0
+}
+/* .progress-bar {
+	margin: 20px;
+	width: 400px;
+	height: 8px;
+  } */

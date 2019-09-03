@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="{%static 'css/material-kit.min.css' %}" />
+        <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{%static 'css/styles.css' %}" />
+        <audio src="{%static 'media/finish.mp3'%}" id="my_audio"></audio>
+    </head>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <title>TaskTimer App</title>
+</head>
+
+<body>
+
+ <!-- NavBar -->
+ {% include 'partials/_navbar.html' %}
+   <!-- Main Content -->
+ {% block content %} {% endblock %}
+ <!-- Footer -->
+ {% include 'partials/_footer.html' %}
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+ integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+ integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+
+<script src="{% static 'js/progressbar.min.js' %}"></script>
+<script>
+ // document.getElementById('duration_counter_{{task_id}}').setText("ASdfas")
+ function timer() {
+     var duration_min = '{{task_duration}}'
+     var duration_milli = '{{task_duration}}' * 1000 * 60
+     var id = 'duration_counter_{{task_id}}'
+     var e = document.getElementById(id);
+     $(e).empty();
+     // $(e).addClass('progress-bar')
+     console.log(duration_milli)
+     var bar = new ProgressBar.Line(e, {
+         strokeWidth: 4,
+         easing: 'easeInOut',
+         duration: duration_milli,
+         color: '#FFEA82',
+         trailColor: '#eee',
+         trailWidth: 1,
+         svgStyle: {
+             width: '78%',
+             height: '100%'
+         },
+         text: {
+             style: {
+                 // Text color.
+                 // Default: same as stroke color (options.color)
+                 color: 'rgb(0, 68, 255)',
+                 position: 'relative',
+                 align: 'center',
+                 left: '55px',
+
+                 //   top: '20px',
+                 padding: 0,
+                 margin: 0,
+                 transform: null
+             },
+             autoStyleContainer: false
+         },
+
+         from: {
+             color: 'rgb(0,255,0)'
+         },
+         to: {
+             color: 'rgb(255,0,0)'
+         },
+         step: (state, bar) => {
+             bar.path.setAttribute('stroke', state.color);
+             bar.setText(Math.round(bar.value() * 100) + ' %' + " *************************" + (
+                     duration_min - (bar.value() * duration_min)).toFixed(2) +
+                 '  minutes remaining');
+             // bar.setText(bar.value()*duration/1000);
+         }
+     });
+
+     bar.animate(1.0);
+     setTimeout(function () {
+         document.getElementById("my_audio").play();
+     }, duration_milli);
+ };
+</script>
+
+
+</body>
+
+</html>
