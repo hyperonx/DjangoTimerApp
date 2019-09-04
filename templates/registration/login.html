@@ -2,14 +2,21 @@
  {% extends 'base.html' %} 
 
 {% block tasks %}Log In{% endblock tasks %}
+
 {% block content %}
 <div class="container">
-<h2>Log In</h2>
+ 
+</div>
+
+<div class="container mx-auto" style="width: 600px;">
+    <h2>Log In</h2></<h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-   
-    <button class="btn btn-success ml-2" type="submit">Log In</button>
+    <button class="btn btn-success ml-auto" type="submit" syle="margin-left:auto">Log In</button>
 </form>
+<a href="{% url 'password_reset' %}" class ="ml-auto" style ="text-decoration: underline;color:blue">Forgot Password</a>
 </div>
+
+
 {% endblock content %}

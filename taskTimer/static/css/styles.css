@@ -50,3 +50,7 @@ footer {
 	width: 400px;
 	height: 8px;
   } */
+  label {
+	  color:rgb(0, 0, 0);
+	  margin-right: 5px
+  }
