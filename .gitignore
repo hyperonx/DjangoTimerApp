@@ -140,3 +140,5 @@ dmypy.json
 /static
 settings_.py
 local_settings.py
+production_settings.py
+test.html

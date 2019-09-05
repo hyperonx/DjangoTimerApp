@@ -35,16 +35,19 @@
 
 <script src="{% static 'js/progressbar.min.js' %}"></script>
 <script>
- // document.getElementById('duration_counter_{{task_id}}').setText("ASdfas")
- function timer() {
+    
+     
+ function timer(progress_bar_id) {
      var duration_min = '{{task_duration}}'
      var duration_milli = '{{task_duration}}' * 1000 * 60
-     var id = 'duration_counter_{{task_id}}'
-     var e = document.getElementById(id);
-     $(e).empty();
+     var progress_bar_id = document.getElementById('duration_bar_{{task_id}}');
+     $(progress_bar_id).empty();
+     
      // $(e).addClass('progress-bar')
-     console.log(duration_milli)
-     var bar = new ProgressBar.Line(e, {
+     //console.log(duration_milli*1000)
+     //console.log(parseInt((duration_milli  % 1000) / 100))
+
+     var bar = new ProgressBar.Line(progress_bar_id, {
          strokeWidth: 4,
          easing: 'easeInOut',
          duration: duration_milli,
@@ -52,7 +55,7 @@
          trailColor: '#eee',
          trailWidth: 1,
          svgStyle: {
-             width: '78%',
+             width: '100%',
              height: '100%'
          },
          text: {
@@ -80,18 +83,36 @@
          },
          step: (state, bar) => {
              bar.path.setAttribute('stroke', state.color);
-             bar.setText(Math.round(bar.value() * 100) + ' %' + " *************************" + (
-                     duration_min - (bar.value() * duration_min)).toFixed(2) +
-                 '  minutes remaining');
-             // bar.setText(bar.value()*duration/1000);
+             //bar.setText(Math.round(bar.value() * 100) + ' %' + " *************************" + (
+               //      duration_min - (bar.value() * duration_min)).toFixed(2) +
+                 //'  minutes remaining');
+             //bar.setText(msToTime(duration_milli-duration_milli/100*bar.value()))
+    
+             
+             //console.log(msToTime((duration_milli)*bar.value()))
          }
      });
 
-     bar.animate(1.0);
+     bar.animate(1);
+    
+    
+     timerwatch('{{task_duration}}'*60, '{{task_duration}}'*60);
+
      setTimeout(function () {
          document.getElementById("my_audio").play();
      }, duration_milli);
  };
+
+ function timerwatch(timeleft, timetotal) {
+    document.getElementById('remaining_time_{{task_id}}').innerHTML =Math.floor(timeleft/60) + ":"+ timeleft%60;
+        //remaining_time_id.innerHTML(Math.floor(timeleft/60) + ":"+ timeleft%60);
+        console.log((Math.floor(timeleft/60) + ":"+ timeleft%60));
+        if(timeleft > 0) {
+             setTimeout(function() {
+                 timerwatch(timeleft - 1, timetotal);
+             }, 1000);
+         }
+     };
 </script>
 
 
