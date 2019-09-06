@@ -9,7 +9,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{%static 'css/font-awesome.min.css' %}" />
 
         <link rel="stylesheet" href="{%static 'css/material-kit.min.css' %}" />
@@ -31,6 +30,7 @@
  <script src="{%static 'js/jquery-3.3.1.slim.min.js' %}"></script>
  <script src="{%static 'js/bootstrap.min.js' %}"></script>
  <script src="{%static 'js/popper.min.js' %}"></script>
+ <script src="{%static 'js/material-kit.min.js' %}"></script>
  
 
 <script src="{% static 'js/progressbar.min.js' %}"></script>
@@ -113,6 +113,20 @@
              }, 1000);
          }
      };
+
+     $(window).on('resize', function(){
+        var win = $(this);
+        if (win.width() < 900) { 
+  
+        $('.btn-group').addClass('btn-group-vertical');
+  
+        }
+      else
+      {
+          $('.btn-group').removeClass('btn-group-vertical');
+      }
+  
+  });
 </script>
 
 
