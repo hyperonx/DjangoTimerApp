@@ -55,3 +55,35 @@ footer {
 	  margin-right: 5px
   }
 
+  .navbar .navbar-nav .nav-item .nav-link{
+	  font-size: 16px;
+  }
+
+  .navbar .navbar-brand{
+	  font-size: 1.6rem;
+  }
+
+  .navbar{
+	  /* background-color: #1d5dec !important; */
+	  background-color: white!important;
+	  /* color: white */
+	  color: black
+  }
+  
+  /* .navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item .nav-link:hover {
+
+	border-bottom: 3px solid #1d5dec;
+
+} */
+.dropdown-menu .dropdown-item:hover {
+	background: #1d5dec;
+	background: linear-gradient(left, #0272a7, #013953);
+	background: -moz-linear-gradient(left, #0272a7, #013953);
+	background: -webkit-gradient(linear, 100% 100%, 0% 0%, from(#0272a7), to(#013953));
+	color: #f8f9fa;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	display: block;
+}
