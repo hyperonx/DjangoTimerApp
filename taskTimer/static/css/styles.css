@@ -64,10 +64,10 @@ footer {
   }
 
   .navbar{
-	  /* background-color: #1d5dec !important; */
-	  background-color: white!important;
-	  /* color: white */
-	  color: black
+	  background-color: #1d5dec !important;
+	  /* background-color: white!important; */
+	  color: white
+	  /* color: black */
   }
   
   /* .navbar-nav .nav-item.active .nav-link,
